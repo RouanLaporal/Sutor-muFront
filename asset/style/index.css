@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+html{
+    background-color: black;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1.5fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "abonnement stream stream chat"
+    "abonnement stream stream chat"
+    "abonnement stream stream chat";
+}
+
+.abonnement {
+    grid-area: abonnement;
+}
+
+.stream {
+    grid-area: stream;
+}
+
+.stream img{
+    width: 100%;
+}
+
+.chat {
+    grid-area: chat;
+    margin-left: 10px;
+}
+
+.formulaire{
+    display: flex;
+    flex-direction: column;
+}
+
+.titre-chat{
+    border-bottom: white solid 0.1px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.message{
+    resize: none;
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.message::placeholder{
+    color: white;
+}
+
+.bouton{
+    background-color: black;
+    color: white;
+    border-color: white;
+}

@@ -80,6 +80,7 @@ a{
 }
 
 #btn {
+
     top: 0;
     left: 0;
     width: 150px;
@@ -129,12 +130,13 @@ a{
 
 
 .submit-btn {
+    color: white;
     width: 85%;
     padding: 10px 30px;
     cursor: pointer;
     display: block;
     margin: auto;
-    background: linear-gradient(to right, #000000, #e35a5a, #000000);
+    background: linear-gradient(to right,  #e35a5a, #000000, #e35a5a);
     border: 0;
     outline: none;
     border-radius: 30px;

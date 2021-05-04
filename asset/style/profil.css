@@ -40,8 +40,41 @@ nav ul li a {
 
 body{
     display: flex;
-
     align-items: center;
     height: 100vh;
     flex-direction: column;
+}
+
+.profil{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.profil form{
+    margin-bottom: 80px;
+}
+
+.profil input{
+    color: white;
+    width: 100%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    color: white;
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #e35a5a, #000000, #e35a5a);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
 }

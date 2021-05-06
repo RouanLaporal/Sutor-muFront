@@ -34,12 +34,22 @@
 
         <div class="chat">
             <h3 class="titre-chat">Chat</h3>
-            <form class="formulaire" action="#">
-                <textarea class="message" name="message" placeholder="Envoyez un message" ></textarea><br>
+            <div class="inbox">
+                <div class="inbox__people">
+                  <h4>Active users</h4>
+                </div>
+                <div class="inbox__messages">
+                    <div class="messages__history"></div>
+                    <div class="fallback"></div>
+                </div>
+            </div>
+            <form class="message_form" action="">
+                <textarea class="message" name="message" placeholder="Envoyez un message" id="messageArea"></textarea><br>
                 <input class="bouton" type="submit" value="Envoyer">
             </form>
         </div>
     </div>
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js"></script>
     <script src="./asset/script/index.js"></script>
 </body>

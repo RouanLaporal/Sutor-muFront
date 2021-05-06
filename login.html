@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="asset/style/login.css">
     <title>Login</title>
 </head>
+
 <body>
 
     <div class="navbar">
@@ -24,7 +26,7 @@
             <div class="button-box">
                 <div id="btn"></div>
                 <button type="button" class="toggle-btn" onclick="login()">Connexion</button>
-                <button type="button" class="toggle-btn" onclick="register()">S'inscrire</button>
+                <button type="button" class="toggle-btn" onclick="register()" >S'inscrire</button>
             </div>
 
             <div class="social-icons">
@@ -32,59 +34,21 @@
                 <img src="asset/img/twitter.png" alt="twitter">
                 <img src="asset/img/gp.png" alt="gp">
             </div>
-            <form id="login" action="" method="post" class="input-group">
-                <input type="text" name="Pseudo"  class="input-field" placeholder="Pseudo" required>
-                <input type="password" name="Password" class="input-field" placeholder="Entrer un mot de passe" required>
-                <input type="checkbox" class="check-box"><span>Se sovenir de moi</span>
-                <button type="submit" class="submit-btn" name="login-btn">Se connecter</button><br>
-                <a href="#">
-                <button type="submit" class="submit-btn" name="login-btn">Retour</button>
-                </a>
-
+            <form id="loginform" action="" method="post" class="input-group">
+                <input type="text" name="Pseudo" class="input-field" placeholder="Pseudo" id="loginUsername" required>
+                <input type="password" name="Password" class="input-field" placeholder="Entrer un mot de passe"
+                    id="loginPassword" required>
+                <input type="checkbox" class="check-box"><span>Se souvenir de moi</span>
+                <button type="submit" class="submit-btn" name="submit">Se connecter</button><br>
             </form>
-            <form id="register" action="" method="post" class="input-group">
-                <input type="text" name="Pseudo" class="input-field" placeholder="Pseudo" required>
-                <input type="email" name="Email" class="input-field" placeholder="Email" required>
-                <input type="password" name="Password" class="input-field" placeholder="Entrer un mot de passe" required>
-                <input type="password" name="confirm-password" class="input-field" placeholder="Confirmez le mot de passe" required>
-                <label class="input-field" style="padding-right: 92px">
-                    <select name="Gender">
-                        <option value="">--Please choose an option--</option>
-                        <option value="Homme">Homme</option>
-                        <option value="Femme">Femme</option>
-                        <option value="Autre">Autre</option>
-                    </select>
-                </label>
-                <input type="text" name="Address" class="input-field" placeholder="Addresse" required>
-                <input type="text" name="CodeP" class="input-field" placeholder="Code Postal" required>
-                <input type="checkbox" class="check-box" required><span>J'adhère aux conditions</span>
-                <button type="submit" class="submit-btn" name="regist-btn">S'inscrire</button><br>
-                <a href="#">
-                    <button type="submit" class="submit-btn" name="login-btn">Retour</button>
-                </a>
+            <form id="registerform" action="" method="POST" class="input-group">
+                <input type="text" name="username" class="input-field" placeholder="Pseudo" id="registerUsername" required>
+                <input type="password" name="password" class="input-field"  placeholder="Entrer un mot de passe" id="registerPassword" required>
+                <button type="submit" class="submit-btn" name="register">S'inscrire</button><br>
             </form>
         </div>
     </div>
-
-
-    <script>
-
-        var x = document.getElementById("login");
-        var y = document.getElementById("register");
-        var z = document.getElementById("btn");
-
-        function register() {
-            x.style.left = "-400px";
-            y.style.left = "50px";
-            z.style.left= "110px";
-        }
-
-        function login() {
-            x.style.left = "50px";
-            y.style.left = "450px";
-            z.style.left= "0px";
-        }
-
-    </script>
+    <script src="./asset/script/register.js"></script>
 </body>
+
 </html>

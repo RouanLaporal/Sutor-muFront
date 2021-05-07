@@ -13,7 +13,7 @@ registerForm.addEventListener('submit', (e) => {
     let body = JSON.stringify(data);
     let headers = { 'Content-Type': "application/json; charset=UTF-8", };
 
-    fetch("http://localhost:3000/users/signup", {
+    fetch("https://cryptic-wildwood-39347.herokuapp.com/users/signup", {
         method: 'POST',
         body: body,
         headers: headers,
@@ -39,7 +39,7 @@ loginForm.addEventListener('submit', (e) => {
     let body = JSON.stringify(data);
     let headers = { "Content-type": "application/json; charset=UTF-8", };
     //get access to all the data  from the api
-    fetch("http://localhost:3000/users/login", {
+    fetch("https://cryptic-wildwood-39347.herokuapp.com/users/login", {
         method: "POST",
         body: body,
         headers: headers,
@@ -47,7 +47,7 @@ loginForm.addEventListener('submit', (e) => {
         .then(response => response.json())
         .then(response => {
             if (response.userId && response.token){
-            fetch(`http://localhost:3000/users/${response.userId}`,{
+            fetch(`https://cryptic-wildwood-39347.herokuapp.com/users/${response.userId}`,{
                 headers:{
                     'Authorization': `${response.token}`,
                 }

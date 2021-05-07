@@ -5,7 +5,7 @@ var messageArea = document.getElementById('messageArea');
 let userName = "";
 
 stream.addEventListener('click', () => {
-    fetch("http://localhost:3000")
+    fetch("https://cryptic-wildwood-39347.herokuapp.com")
         .then(response => {
             if (flvjs.isSupported()) {
                 var videoElement = document.getElementById('videoElement');
@@ -20,8 +20,8 @@ stream.addEventListener('click', () => {
         })
 })
 
-messageArea.addEventListener('focusin', ()=> {
-    var socket = io('http://localhost:3000');
+if (!window.closed) {
+    var socket = io('https://cryptic-wildwood-39347.herokuapp.com');
     var inboxPeople = document.querySelector(".inbox__people");
     var messageForm = document.querySelector(".message_form");
     var messageBox = document.querySelector(".messages__history");
@@ -29,15 +29,15 @@ messageArea.addEventListener('focusin', ()=> {
 
 
     let userName = "";
-    
+
     var newUserConnected = (user) => {
         userName = user || `User${Math.floor(Math.random() * 1000000)}`;
         socket.emit("new user", userName);
         addToUserBox(userName);
     };
-    
+
     var addToUserBox = (userName) => {
-        if(!!document.querySelector(`.${userName}-userlist`)){
+        if (!!document.querySelector(`.${userName}-userlist`)) {
             return;
         }
         var userBox = `
@@ -48,11 +48,11 @@ messageArea.addEventListener('focusin', ()=> {
         inboxPeople.innerHTML += userBox;
     };
 
-    
+
     var addNewMessage = ({ user, message }) => {
         var time = new Date();
-        var formattedTime = time.toLocaleString("fr-FR",  {hour: "numeric", minute:"numeric"});
-        
+        var formattedTime = time.toLocaleString("fr-FR", { hour: "numeric", minute: "numeric" });
+
         var receivedMsg = `
         <div class="incoming__message">
             <div class="recerived__message">
@@ -78,10 +78,10 @@ messageArea.addEventListener('focusin', ()=> {
     };
 
     newUserConnected();
-    
-    messageForm.addEventListener("submit", (e) =>{
+
+    messageForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        if(!messageArea.value){
+        if (!messageArea.value) {
             return;
         }
         socket.emit("chat message", {
@@ -92,33 +92,31 @@ messageArea.addEventListener('focusin', ()=> {
         messageArea.value = "";
     });
 
-    messageArea.addEventListener("keyup",()=>{
-        socket.emit("typing",{
+    messageArea.addEventListener("keyup", () => {
+        socket.emit("typing", {
             isTyping: messageArea.value.length > 0,
             nick: userName,
         });
     });
 
-    socket.on("new user", function (data){
+    socket.on("new user", function (data) {
         data.map((user) => addToUserBox(user));
     });
 
-    socket.on("user disconnected", function(userName){
+    socket.on("user disconnected", function (userName) {
         document.querySelector(`.${userName}-userlist`).remove();
     });
 
-    socket.on("chat message", function(data){
-        addNewMessage({user: data.nick, message: data.message });
+    socket.on("chat message", function (data) {
+        addNewMessage({ user: data.nick, message: data.message });
     });
 
-    
-
-    socket.on("typing", function(data){
+    socket.on("typing", function (data) {
         var { isTyping, nick } = data;
-        if(!isTyping){
-            fallback.innerHTML ="";
+        if (!isTyping) {
+            fallback.innerHTML = "";
             return;
         }
         fallback.innerHTML = `<p>${nick} is typing...</p>`;
     });
-})
+}

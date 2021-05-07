@@ -46,8 +46,20 @@ loginForm.addEventListener('submit', (e) => {
     })
         .then(response => response.json())
         .then(response => {
-            if (response.userId && response.token)
-                document.location.href = "./profil.html";
+            if (response.userId && response.token){
+            fetch(`http://localhost:3000/users/${response.userId}`,{
+                headers:{
+                    'Authorization': `${response.token}`,
+                }
+            })
+                .then(res => res.json())
+                .then(res => { 
+                    if(res._id)
+                        document.location.href = "./profil.html";
+                    else
+                        window.alert('on a pas pu te co bro réesaie');
+                });
+            }
             else
                 alert('NOPE');
         })
